@@ -21,8 +21,8 @@ frequecny = speed_of_light / wavelength
 
 import sys
 import math
-import pint
 from pint import UnitRegistry
+from pint import DimensionalityError
 
 
 ureg = UnitRegistry(autoconvert_offset_to_baseunit=True)
@@ -37,7 +37,7 @@ class RadioTest:
     def __init__(self):
         try:
             self.freq = Q_(input("Enter Frequency: ")).to("Hz")
-        except pint.DimensionalityError:
+        except DimensionalityError:
             print("You must enter units, e.g. Hz or MHz")
             sys.exit(1)          
         self.wavelength = (c / self.freq).to("m") # Converts frequency to wavelength
@@ -54,7 +54,7 @@ class RadioTest:
             self.separation = Q_(
                 input("Enter distance between test set and radio antennas: ")
             ).to("m")
-        except pint.DimensionalityError:
+        except DimensionalityError:
             print("You must enter units, e.g. ft or meters")
             self.field()        
         # ensures antennas are in far field
@@ -69,7 +69,7 @@ class RadioTest:
         try:                
             self.Gt = Q_(input("Enter gain of the transmitting antena: ")).to("dBi")
             self.Gr = Q_(input("Enter gain of the receiving antenna: ")).to("dBi")
-        except pint.DimensionalityError:
+        except DimensionalityError:
             print("You must enter units: dBi or dBd")                
             self.loss()          
         self.path_loss = (
@@ -87,7 +87,7 @@ class RadioTest:
         # comment out try/except block to lock at 5W for A-30 test
         try:
             self.Pt = Q_(input("Enter power of the transmited signal: ")).to("W")
-        except pint.DimensionalityError:
+        except DimensionalityError:
             print("You must enter units, e.g. dBm or W")
             self.limits()            
         self.pr_24 = (
@@ -121,7 +121,7 @@ class RadioTest:
     def range(self):        
         try:
             self.rf_level = Q_(input("Enter test set RF Level that opens receiver: ")).to("dBm")
-        except pint.DimensionalityError:
+        except DimensionalityError:
             print("You must enter units, e.g. dBm or W")
             self.range()
         self.Pr = (self.rf_level.magnitude                            
