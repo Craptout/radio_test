@@ -21,5 +21,6 @@ Aviation antennas are generally 0 dBd.
 wavelength = speed_of_light / frequency
 
 License
+-------
 See the LICENSE file for license rights and limitations (BSD-3-Clause).
 
