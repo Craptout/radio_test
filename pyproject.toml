@@ -2,7 +2,7 @@
 name = "radio-test_craptout"
 version = "0.1.0"
 description = "Radio performance calculator"
-authors = ["Craptout <craptout@gmail.com>"]
+authors = ["John Flemmer <craptout@gmail.com>"]
 readme = "README.md"
 license = "BSD-3-Clause"
 
