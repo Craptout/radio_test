@@ -6,22 +6,12 @@ import sys
 import math
 
 
-class RadioTest:
+class SimpleA30:
     def __init__(self):
         self.accuracy = 2  # Test set rf level accuracy in dBm. Set by admin.
 
-    def loss(self):
-        try:
-            # Get input for separation in feet and convert to meters for calculation.
-            self.separation = (
-                float(
-                    input("Enter distance between test set and radio antennas (ft): ")
-                )
-                * 0.3048
-            )
-        except ValueError:
-            print("You must enter a number. Please try again.")
-            sys.exit(1)
+    def loss(self, separation):  # enter separation in feet
+        self.separation = separation * 0.3048  # converts to meters for calculation
         if self.separation < 6.096:
             print("Separation must be 20 ft or greater")  # ensures far field
             sys.exit(1)
@@ -38,29 +28,19 @@ class RadioTest:
         # Minimum RF Level from test set needed to simulate 50 nmi range
         self.rf_50 = -72.27838121 + self.effective_loss
         # Display rf levels when separation is entered
-        print(
-            f"Test set RF Level must be at least {self.rf_24:.2f} dBm for 24 nmi range"
-        )
-        print(
-            f"Test set RF Level must be at least {self.rf_50:.2f} dBm for 50 nmi range"
-        )
 
-    def range(self):
-        try:
-            self.rf_level = float(
-                input("Enter test set RF Level that opens receiver in dB: ")
-            )
-        except ValueError:
-            print("You must enter a number. Please try again.")
-            sys.exit(1)
+    def range(self, rf_level):
+        self.rf_level = rf_level
         self.effective_rx_power = self.rf_level - self.effective_loss
         self.radio_range = (
             (math.pow(10, ((221.28 - self.effective_rx_power) / 20))) / 5148099000
         ) * 0.00053996  # converts meters to nautical miles
-        print(f"The radio's max effective range is {self.radio_range:.1f} nmi")
 
 
-com1 = RadioTest()
-com1.loss()
+com1 = SimpleA30()
+com1.loss(20)
 com1.limits()
-com1.range()
+print(f"Test set RF Level must be at least {com1.rf_24:.2f} dBm for 24 nmi range")
+print(f"Test set RF Level must be at least {com1.rf_50:.2f} dBm for 50 nmi range")
+com1.range(float(input("Enter test set RF Level that opens receiver in dB: ")))
+print(f"The radio's max effective range is {com1.radio_range:.1f} nmi")
