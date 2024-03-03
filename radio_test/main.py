@@ -121,7 +121,7 @@ class RadioTest:
             self.radio_range = Q_(radio_range).to("m")
             self.power_received = Q_(power_received).to("dBm")
         except DimensionalityError:
-            print("You must enter a value with units, e.g. 20 miles")
+            print("You must enter a value with units, e.g. 20 miles or -50 dBm")
             sys.exit(1)
         self.power_transmitted = ((
             self.power_received.magnitude
@@ -135,7 +135,7 @@ class RadioTest:
             self.radio_range = Q_(radio_range).to("m")
             self.power_received = Q_(power_received).to("dBm")
         except DimensionalityError:
-            print("You must enter a value with units, e.g. 20 miles")
+            print("You must enter a value with units, e.g. 20 miles or -50 dBm")
             sys.exit(1)
         self.tx_ant_gain = (
             self.power_received.magnitude
@@ -149,7 +149,7 @@ class RadioTest:
             self.radio_range = Q_(radio_range).to("m")
             self.power_received = Q_(power_received).to("dBm")
         except DimensionalityError:
-            print("You must enter a value with units, e.g. 20 miles")
+            print("You must enter a value with units, e.g. 20 miles or -50 dBm")
             sys.exit(1)
         self.rx_ant_gain = (
             self.power_received.magnitude
