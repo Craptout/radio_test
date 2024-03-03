@@ -8,17 +8,17 @@ Includes class with preset variables for FS/OAS A-30 radio range test for wildla
 
 Variables
 ---------
-Pr = Power recieved \n
-Pt = Power transmitted \n
-Gt = Gain of transmitting antenna = tx_ant_gain \n
-Gr = Gain of receiving antenna = rx_ant_gain \n
-d = separation between transmitting and receiving antennas \n
-Units for wavelength and distance must be the same. \n 
-SI Units are used for calculations and converted for users where needed. \n
-dBi = decibles referenced to an isotropic raditor = dBd + 2.15 \n
-dBd = decibles referenced to a dipole antenna = dBi - 2.15  \n
-Aviation antennas are generally 0 dBd. \n
-wavelength = speed_of_light / frequency \n
+Pr = Power recieved <br>
+Pt = Power transmitted <br>
+Gt = Gain of transmitting antenna = tx_ant_gain <br>
+Gr = Gain of receiving antenna = rx_ant_gain <br>
+d = separation between transmitting and receiving antennas <br>
+Units for wavelength and distance must be the same. <br> 
+SI Units are used for calculations and converted for users where needed. <br>
+dBi = decibles referenced to an isotropic raditor = dBd + 2.15 <br>
+dBd = decibles referenced to a dipole antenna = dBi - 2.15 <br> 
+Aviation antennas are generally 0 dBd. <br>
+wavelength = speed_of_light / frequency <br>
 
 License
 -------
