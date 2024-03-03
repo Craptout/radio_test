@@ -1,3 +1,0 @@
-decible_isotropic = [rpower] = dBi
-decible_dipole = dBi; offset: 2.15 = dBd
-
