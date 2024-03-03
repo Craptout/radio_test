@@ -25,7 +25,8 @@ from pint import DimensionalityError
 
 ureg = UnitRegistry(autoconvert_offset_to_baseunit=True) #baseunit required for dBm conversion
 # defines dBi and dBd
-ureg.load_definitions("my_def.txt")
+ureg.define("decible_isotropic = [rpower] = dBi")
+ureg.define("decible_dipole = dBi; offset: 2.15 = dBd")
 Q_ = ureg.Quantity
 # speed of light
 c = Q_("299,792,458 m/s")
