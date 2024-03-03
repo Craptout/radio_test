@@ -1,7 +1,7 @@
 Purpose
 -------
-Determine radio performance based on the Friis Transmission Equation using decibles for power
-Pr{dB} = Pt{dB} + Gt{dBi} + Gr{dBi} + 20log10((wavelength/(4*pi*d)))
+Determine radio performance based on the Friis Transmission Equation using decibles for power <br>
+Pr{dB} = Pt{dB} + Gt{dBi} + Gr{dBi} + 20log10((wavelength/(4*pi*d))) <br>
 Range (m) = (10^(Pt{dBm} + Gt{dBi} + Gr{dBi} - Pr{dBm} + 180) / 20) / (41.88 * freq{Hz})
 
 Includes class with preset variables for FS/OAS A-30 radio range test for wildland fire.
