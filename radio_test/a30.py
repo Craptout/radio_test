@@ -27,7 +27,6 @@ class SimpleA30:
         self.rf_24 = -65.9 + self.effective_loss
         # Minimum RF Level from test set needed to simulate 50 nmi range
         self.rf_50 = -72.27838121 + self.effective_loss
-        # Display rf levels when separation is entered
 
     def range(self, rf_level):
         self.rf_level = rf_level
