@@ -2,8 +2,7 @@
 This version is only for FS/OAS A-30 radio testing
 """
 
-import sys
-import math
+import sys, math
 
 
 class SimpleA30:
