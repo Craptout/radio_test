@@ -12,10 +12,12 @@ class SimpleA30:
             print("Separation must be 20 ft or greater")  # ensures far field
             sys.exit(1)
         self.accuracy = 2  # Test set rf level accuracy in dBm. Set by admin.
+        self.coax_loss = 2  # Loss of coax if using with a remote antenna or tripod.
         self.effective_loss = (
             ((20) * math.log10(self.separation))
             + 9.940587561127312
             + self.accuracy
+            + self.coax_loss
             + 1  # 1 dBm uncertainty added to account for minor differences such as antenna placement
         )
         # Minimum RF Level from test set needed to simulate 24 nmi range
@@ -34,5 +36,5 @@ class SimpleA30:
 com1 = SimpleA30(20)
 print(f"Test set RF Level must be at least {com1.rf_24:.2f} dBm for 24 nmi range")
 print(f"Test set RF Level must be at least {com1.rf_50:.2f} dBm for 50 nmi range")
-com1.range(float(input("Enter test set RF Level that opens receiver in dB: ")))
+com1.range(float(input("Enter test set RF Level that opens receiver in dBm: ")))
 print(f"The radio's max effective range is {com1.radio_range:.1f} nmi")
