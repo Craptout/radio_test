@@ -40,6 +40,7 @@ class RadioTest:
         self.wavelength = (c / self.freq).to("m") # Converts frequency to wavelength
         self.far_field = 2 * self.wavelength             
         self.accuracy = Q_("2 dB") # IFR 4000 RF level accuracy. Provide setting/admin edit.
+        self.coax_loss = Q_("0 dB")
         self.uncertainty = Q_("1 dB") # Built in error to account for minor differences such as antenna placement
 
     def loss(self, separation):
@@ -59,7 +60,8 @@ class RadioTest:
             - self.rx_ant_gain.magnitude                
         ) * ureg("dB")
         self.effective_loss = (self.path_loss.magnitude 
-        + self.accuracy.magnitude 
+        + self.accuracy.magnitude
+        + self.coax_loss.magnitude 
         + self.uncertainty.magnitude) * ureg("dB")    
           
     def limits(self, power_transmitted):
@@ -153,6 +155,7 @@ class A30(RadioTest):
         self.tx_ant_gain = Q_(tx_ant_gain).to("dBi")
         self.rx_ant_gain = Q_(rx_ant_gain).to("dBi")
         self.accuracy = Q_("2 dB") # IFR 4000 RF level accuracy. Provide setting/admin edit.
+        self.coax_loss = Q_("0 dB")
         self.uncertainty = Q_("1 dB") # Built in error to account for minor differences such as antenna placement       
     
     def loss(self): # moves separation to constructor      
@@ -168,6 +171,7 @@ class A30(RadioTest):
         ) * ureg("dB")
         self.effective_loss = (self.path_loss.magnitude 
         + self.accuracy.magnitude 
+        + self.coax_loss.magnitude
         + self.uncertainty.magnitude) * ureg("dB")
         
     def limits(self):  # calls loss and locks power_transmitted at 5W in constructor
