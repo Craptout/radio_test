@@ -12,7 +12,7 @@ class SimpleA30:
             print("Separation must be 20 ft or greater")  # ensures far field
             sys.exit(1)
         self.accuracy = 2  # Test set rf level accuracy in dBm. Set by admin.
-        self.coax_loss = 2  # Loss of coax if using with a remote antenna or tripod.
+        self.coax_loss = 0  # Loss of coax if using with a remote antenna or tripod.
         self.effective_loss = (
             ((20) * math.log10(self.separation))
             + 9.940587561127312
